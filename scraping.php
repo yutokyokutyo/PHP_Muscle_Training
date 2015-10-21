@@ -1,15 +1,16 @@
 <?php
-$homepage = file_get_contents('http://www.walkerplus.com/top/tokyo.html');
-$array = explode("\n", $homepage);
-$events = 0;
-foreach ($array as $value) {
-    $pos = strpos($value, '<p class="event"');
-    if ($pos !== false) {
-        $hoge = ['<p class="event">', '</p>'];
-        $p_class = str_replace($hoge, "", $value);
-        print(trim($p_class)."\n");
-        $events++;
-        if ($events === 3) {
+$html  = file_get_contents('http://www.walkerplus.com/top/tokyo.html');
+$lines = explode("\n", $html);
+$spots = 0;
+
+foreach ($lines as $line) {
+    $line = trim($line);
+    if (strstr($line, '<p class="event"')) {
+        $tags = ['<p class="event">', '</p>'];
+        $spot = str_replace($tags, "", $line);
+        print($spot."\n");
+        $spots++;
+        if ($spots === 3) {
             break;
         }
     }
