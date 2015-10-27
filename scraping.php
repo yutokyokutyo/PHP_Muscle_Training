@@ -63,7 +63,15 @@ function testOdekakeSpots() {
     }
 }
 
+function testPrintOdekakeSpots() {
+    $spots = printOdekakeSpots();
+    if ($spots = "エプソン アクアパーク品川\n東京ソラマチ(R)\nJ-WORLD TOKYO%") {
+        print("print ok!\n");
+    }
+}
+
 testOdekakeSpots();
 testParseHtmlToArray();
+testPrintOdekakeSpots();
 print printOdekakeSpots();
 
