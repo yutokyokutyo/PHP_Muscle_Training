@@ -1,5 +1,6 @@
 <?php
 
+// classにまとめるぞ！
 function parseHtmlToArray() {
     $html  = file_get_contents('http://www.walkerplus.com/top/tokyo.html');
     $lines = explode("\n", $html);
@@ -29,6 +30,7 @@ function printOdekakeSpots() {
     $spots = odekakeSpots();
     return implode("\n", $spots);
 }
+
 
 function testParseHtmlToArray() {
     $lines = parseHtmlToArray();
