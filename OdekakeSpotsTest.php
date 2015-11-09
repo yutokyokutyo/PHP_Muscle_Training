@@ -3,16 +3,14 @@ require('./OdekakeSpots.php');
 
 class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 {
-    public static function testParseHtmlToArray() {
+    public function testParseHtmlToArray() {
         $lines = OdekakeSpots::parseHtmlToArray();
         # もしもarrayだったらOk
         if (is_array($lines)) {
             print("this is array!!\n");
         }
-        # もしも配列の中にdoctypeが入ってたらok
-        if (in_array('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">', $lines)) {
-            print("this is html!!\n");
-        }
+        # もしも配列の中にdoctypeが入ってたらHtmlであることをテストできるのでok
+        $this->assertEquals($lines[0], '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
     }
 
     public function testGetRanking()
