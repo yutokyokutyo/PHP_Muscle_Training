@@ -32,5 +32,4 @@ class OdekakeSpots
     }
 }
 
-// 実行するのはファイルを分けるべき
 OdekakeSpots::getRanking();

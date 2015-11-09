@@ -1,7 +1,6 @@
 <?php
 require('./OdekakeSpots.php');
 
-
 class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 {
     public static function testParseHtmlToArray() {
@@ -16,33 +15,19 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function testGetRanking() 
+    public function testGetRanking()
     {
         $spots = OdekakeSpots::getRanking();
 
         $this->assertEquals($spots[0], "エプソン アクアパーク品川");
-
-        if ($spots[0] === "エプソン アクアパーク品川") {
-            print("Success1!\n");
-        } else {
-            print("Failure1!\n");
-        }
-        if ($spots[1] === "J-WORLD TOKYO") {
-            print("Success2!\n");
-        } else {
-            print("Failure2!\n");
-        }
-        if ($spots[2] === "三井アウトレットパーク 多摩南大沢") {
-            print("Success3!\n");
-        } else {
-            print("Failure3!\n");
-        }
+        $this->assertEquals($spots[1], "三井アウトレットパーク 多摩南大沢");
+        $this->assertEquals($spots[2], "J-WORLD TOKYO");
     }
 
     public static function testPrintOdekakeSpots()
     {
         $spots = OdekakeSpots::printOdekakeSpots();
-        if ($spots === "エプソン アクアパーク品川\nJ-WORLD TOKYO\n三井アウトレットパーク 多摩南大沢") {
+        if ($spots === "エプソン アクアパーク品川\n三井アウトレットパーク 多摩南大沢\nJ-WORLD TOKYO") {
             print("print ok!\n");
         }
     }
