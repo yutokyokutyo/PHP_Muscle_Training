@@ -6,9 +6,7 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
     public function testParseHtmlToArray() {
         $lines = OdekakeSpots::parseHtmlToArray();
         # もしもarrayだったらOk
-        if (is_array($lines)) {
-            print("this is array!!\n");
-        }
+        $this->assertInternalType('array', $lines);
         # もしも配列の中にdoctypeが入ってたらHtmlであることをテストできるのでok
         $this->assertEquals($lines[0], '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
     }
