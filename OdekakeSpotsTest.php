@@ -20,12 +20,10 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($spots[2], "J-WORLD TOKYO");
     }
 
-    public static function testPrintOdekakeSpots()
+    public function testPrintOdekakeSpots()
     {
         $spots = OdekakeSpots::printOdekakeSpots();
-        if ($spots === "エプソン アクアパーク品川\n三井アウトレットパーク 多摩南大沢\nJ-WORLD TOKYO") {
-            print("print ok!\n");
-        }
+        $this->assertEquals($spots, "エプソン アクアパーク品川\n三井アウトレットパーク 多摩南大沢\nJ-WORLD TOKYO");
     }
 }
 
