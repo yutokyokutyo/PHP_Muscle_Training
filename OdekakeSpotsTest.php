@@ -1,7 +1,8 @@
 <?php
 require('./OdekakeSpots.php');
 
-class OdekakeSpotsTest
+
+class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 {
     public static function testParseHtmlToArray() {
         $lines = OdekakeSpots::parseHtmlToArray();
@@ -15,9 +16,12 @@ class OdekakeSpotsTest
         }
     }
 
-    public static function testGetRanking()
+    public function testGetRanking() 
     {
         $spots = OdekakeSpots::getRanking();
+
+        $this->assertEquals($spots[0], "エプソン アクアパーク品川");
+
         if ($spots[0] === "エプソン アクアパーク品川") {
             print("Success1!\n");
         } else {
@@ -43,8 +47,4 @@ class OdekakeSpotsTest
         }
     }
 }
-
-OdekakeSpotsTest::testGetRanking();
-OdekakeSpotsTest::testParseHtmlToArray();
-OdekakeSpotsTest::testPrintOdekakeSpots();
 
