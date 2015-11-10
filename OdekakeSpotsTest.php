@@ -15,7 +15,9 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 
     public function testGetRanking()
     {
-        $spots = OdekakeSpots::getRanking();
+        $path = './WalkerPlusTest.html';
+        $lines = OdekakeSpots::parseHtmlToArray($path);
+        $spots = OdekakeSpots::getRanking($lines);
 
         $this->assertEquals($spots[0], "エプソン アクアパーク品川");
         $this->assertEquals($spots[1], "東京ソラマチ(R)");
@@ -24,7 +26,8 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 
     public function testPrintOdekakeSpots()
     {
-        $spots = OdekakeSpots::printOdekakeSpots();
+        $path = './WalkerPlusTest.html';
+        $spots = OdekakeSpots::printOdekakeSpots($path);
         $this->assertEquals($spots, "エプソン アクアパーク品川\n東京ソラマチ(R)\n三井アウトレットパーク 多摩南大沢");
     }
 }

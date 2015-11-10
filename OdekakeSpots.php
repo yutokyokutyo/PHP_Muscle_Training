@@ -11,9 +11,7 @@ class OdekakeSpots
         // ネットが死んでたり、hostサーバが落ちてたらテストが落ちてしまう懸念有り
     }
 
-    public static function getRanking() {
-        $path = 'http://www.walkerplus.com/top/tokyo.html';
-        $lines = self::parseHtmlToArray($path);
+    public static function getRanking($lines) {
         $spots = [];
 
         foreach ($lines as $line) {
@@ -30,10 +28,12 @@ class OdekakeSpots
         return $spots;
     }
 
-    public static function printOdekakeSpots() {
-        $spots = self::getRanking();
+    public static function printOdekakeSpots($path = '') {
+        if ($path === '') {
+            $path = 'http://www.walkerplus.com/top/tokyo.html';
+        }
+        $lines = OdekakeSpots::parseHtmlToArray($path);
+        $spots = self::getRanking($lines);
         return implode("\n", $spots);
     }
 }
-
-OdekakeSpots::getRanking();
