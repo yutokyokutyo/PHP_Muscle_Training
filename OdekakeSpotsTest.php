@@ -3,8 +3,10 @@ require('./OdekakeSpots.php');
 
 class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 {
-    public function testParseHtmlToArray() {
-        $lines = OdekakeSpots::parseHtmlToArray();
+    public function testParseHtmlToArray()
+    {
+        $path = 'http://www.walkerplus.com/top/tokyo.html';
+        $lines = OdekakeSpots::parseHtmlToArray($path);
         # もしもarrayだったらOk
         $this->assertInternalType('array', $lines);
         # もしも配列の中にdoctypeが入ってたらHtmlであることをテストできるのでok
@@ -16,14 +18,14 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
         $spots = OdekakeSpots::getRanking();
 
         $this->assertEquals($spots[0], "エプソン アクアパーク品川");
-        $this->assertEquals($spots[1], "三井アウトレットパーク 多摩南大沢");
-        $this->assertEquals($spots[2], "J-WORLD TOKYO");
+        $this->assertEquals($spots[1], "東京ソラマチ(R)");
+        $this->assertEquals($spots[2], "三井アウトレットパーク 多摩南大沢");
     }
 
     public function testPrintOdekakeSpots()
     {
         $spots = OdekakeSpots::printOdekakeSpots();
-        $this->assertEquals($spots, "エプソン アクアパーク品川\n三井アウトレットパーク 多摩南大沢\nJ-WORLD TOKYO");
+        $this->assertEquals($spots, "エプソン アクアパーク品川\n東京ソラマチ(R)\n三井アウトレットパーク 多摩南大沢");
     }
 }
 
