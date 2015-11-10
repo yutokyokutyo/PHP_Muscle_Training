@@ -5,7 +5,7 @@ class OdekakeSpotsTest extends PHPUnit_Framework_TestCase
 {
     public function testParseHtmlToArray()
     {
-        $path = 'http://www.walkerplus.com/top/tokyo.html';
+        $path = './WalkerPlusTest.html';
         $lines = OdekakeSpots::parseHtmlToArray($path);
         # もしもarrayだったらOk
         $this->assertInternalType('array', $lines);
