@@ -2,13 +2,9 @@
 class OdekakeSpots
 {
     public static function parseHtmlToArray($path) {
-        // if 本番環境のとき, PHP 実行したとき
         $html  = file_get_contents($path);
-        // else if テスト環境のとき, PHPUnit で実行したとき
-        // local のhtmlをみる
         $lines = explode("\n", $html);
         return $lines;
-        // ネットが死んでたり、hostサーバが落ちてたらテストが落ちてしまう懸念有り
     }
 
     public static function getRanking($lines) {
