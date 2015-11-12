@@ -1,8 +1,10 @@
 <?php
 class OdekakeSpots
 {
-    public static function parseHtmlToArray($path) {
-        $html  = file_get_contents($path);
+    const URL = 'http://www.walkerplus.com/top/tokyo.html';
+
+    public static function parseHtmlToArray($url) {
+        $html  = file_get_contents($url);
         $lines = explode("\n", $html);
         return $lines;
     }
@@ -24,11 +26,8 @@ class OdekakeSpots
         return $spots;
     }
 
-    public static function printOdekakeSpots($path = '') {
-        if ($path === '') {
-            $path = 'http://www.walkerplus.com/top/tokyo.html';
-        }
-        $lines = OdekakeSpots::parseHtmlToArray($path);
+    public static function printOdekakeSpots($url = self::URL) {
+        $lines = OdekakeSpots::parseHtmlToArray($url);
         $spots = self::getRanking($lines);
         return implode("\n", $spots);
     }
