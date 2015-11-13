@@ -3,13 +3,13 @@ class OdekakeSpots
 {
     const URL = 'http://www.walkerplus.com/top/tokyo.html';
 
-    public static function parseHtmlToArray($url) {
+    public static function parseHtmlToArray(string $url) {
         $html  = file_get_contents($url);
         $lines = explode("\n", $html);
         return $lines;
     }
 
-    public static function getRanking($lines) {
+    public static function getRanking(array $lines) {
         $spots = [];
 
         foreach ($lines as $line) {
